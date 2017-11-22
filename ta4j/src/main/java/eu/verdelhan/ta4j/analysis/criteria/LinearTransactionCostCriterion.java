@@ -39,6 +39,8 @@ public class LinearTransactionCostCriterion extends AbstractAnalysisCriterion {
 
     private double a;
     private double b;
+    
+    private boolean outputCost = true;
 
     private TotalProfitCriterion profit;
 
@@ -49,7 +51,7 @@ public class LinearTransactionCostCriterion extends AbstractAnalysisCriterion {
      * @param a the a coefficient (e.g. 0.005 for 0.5% per {@link Order order})
      */
     public LinearTransactionCostCriterion(double initialAmount, double a) {
-        this(initialAmount, a, 0);
+        this(initialAmount, a, 0);        
     }
 
     /**
@@ -91,7 +93,7 @@ public class LinearTransactionCostCriterion extends AbstractAnalysisCriterion {
             totalCosts += getOrderCost(currentTrade.getEntry(), tradedAmount);
         }
         
-        return totalCosts;
+        return tradedAmount;
     }
 
     @Override

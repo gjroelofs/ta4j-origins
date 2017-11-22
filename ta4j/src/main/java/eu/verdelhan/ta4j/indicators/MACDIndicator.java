@@ -44,6 +44,15 @@ public class MACDIndicator extends CachedIndicator<Decimal> {
         shortTermEma = new EMAIndicator(indicator, shortTimeFrame);
         longTermEma = new EMAIndicator(indicator, longTimeFrame);
     }
+    
+    public MACDIndicator(Indicator<Decimal> indicator, EMAIndicator shortTimeFrame, EMAIndicator longTimeFrame) {
+        super(indicator);
+        if (shortTimeFrame.timeFrame > longTimeFrame.timeFrame) {
+            throw new IllegalArgumentException("Long term period count must be greater than short term period count");
+        }
+        shortTermEma = shortTimeFrame;
+        longTermEma = longTimeFrame;
+    }
 
     @Override
     protected Decimal calculate(int index) {

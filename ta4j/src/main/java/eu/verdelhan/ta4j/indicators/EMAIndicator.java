@@ -34,7 +34,7 @@ public class EMAIndicator extends RecursiveCachedIndicator<Decimal> {
 
     private final Indicator<Decimal> indicator;
 
-    private final int timeFrame;
+    public final int timeFrame;
 
     private final Decimal multiplier;
 

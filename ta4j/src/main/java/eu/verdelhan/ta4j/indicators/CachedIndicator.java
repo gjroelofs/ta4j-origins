@@ -78,8 +78,8 @@ public abstract class CachedIndicator<T> extends AbstractIndicator<T> {
         T result;
         if (index < removedTicksCount) {
             // Result already removed from cache
-            log.trace("{}: result from tick {} already removed from cache, use {}-th instead",
-                    getClass().getSimpleName(), index, removedTicksCount);
+//            log.trace("{}: result from tick {} already removed from cache, use {}-th instead",
+//                    getClass().getSimpleName(), index, removedTicksCount);
             increaseLengthTo(removedTicksCount, maximumResultCount);
             highestResultIndex = removedTicksCount;
             result = results.get(0);
