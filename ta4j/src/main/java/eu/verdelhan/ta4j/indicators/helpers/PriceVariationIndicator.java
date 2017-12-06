@@ -33,15 +33,22 @@ import eu.verdelhan.ta4j.indicators.CachedIndicator;
 public class PriceVariationIndicator extends CachedIndicator<Decimal> {
 
     private TimeSeries series;
+    private int timeframe = 1;
 
     public PriceVariationIndicator(TimeSeries series) {
         super(series);
         this.series = series;
     }
 
+    public PriceVariationIndicator(TimeSeries series, int timeframe) {
+        super(series);
+        this.series = series;
+        this.timeframe = timeframe;
+    }
+
     @Override
     protected Decimal calculate(int index) {
-        Decimal previousTickClosePrice = series.getTick(Math.max(0, index - 1)).getClosePrice();
+        Decimal previousTickClosePrice = series.getTick(Math.max(0, index - timeframe)).getClosePrice();
         Decimal currentTickClosePrice = series.getTick(index).getClosePrice();
         return currentTickClosePrice.dividedBy(previousTickClosePrice);
     }

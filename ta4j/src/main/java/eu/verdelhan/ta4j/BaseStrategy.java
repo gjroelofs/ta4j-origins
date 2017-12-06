@@ -96,14 +96,14 @@ public class BaseStrategy implements Strategy {
     @Override
     public boolean shouldEnter(int index, TradingRecord tradingRecord) {
         boolean enter = Strategy.super.shouldEnter(index, tradingRecord);
-        traceShouldEnter(index, enter);
+//        traceShouldEnter(index, enter);
         return enter;
     }
 
     @Override
     public boolean shouldExit(int index, TradingRecord tradingRecord) {
         boolean exit = Strategy.super.shouldExit(index, tradingRecord);
-        traceShouldExit(index, exit);
+//        traceShouldExit(index, exit);
         return exit;
     }
 

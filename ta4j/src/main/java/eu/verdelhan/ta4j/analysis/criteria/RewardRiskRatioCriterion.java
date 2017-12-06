@@ -38,6 +38,13 @@ public class RewardRiskRatioCriterion extends AbstractAnalysisCriterion {
 
     private AnalysisCriterion maxDrawdown = new MaximumDrawdownCriterion();
 
+    public RewardRiskRatioCriterion() {
+	}
+    
+    public RewardRiskRatioCriterion(AnalysisCriterion criterionProfit) {
+    	totalProfit = criterionProfit;
+    }
+    
     @Override
     public double calculate(TimeSeries series, TradingRecord tradingRecord) {
         return totalProfit.calculate(series, tradingRecord) / maxDrawdown.calculate(series, tradingRecord);
